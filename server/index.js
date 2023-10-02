@@ -12,7 +12,7 @@ app.use(express.static('./public'))
 app.set('view engine', 'ejs');
 
 app.get('/', (req, res) => {
-    res.json({ status: 'SUCCESS', message: 'All good!'})
+    res.json({ status: 'active', service: 'Job listing backend', time: new Data()})
   })
 
   app.listen(process.env.PORT, () => {
