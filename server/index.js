@@ -4,6 +4,8 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
+const jobadd = require('./routes/Job')
+
 
 dotenv.config();
 
@@ -58,7 +60,10 @@ app.post('/register', async (req, res) => {
       expiresIn: '1h', // Set an appropriate expiration time
     });
 
-    res.status(200).json({ message: 'Registered successfully', jwtToken });
+
+    res.status(200).json({ message: 'Registered successfully', jwtToken ,
+    recruiterName: user.name, // Include the recruiter's name in the response
+  });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Registration failed' });
@@ -92,7 +97,11 @@ app.post('/login', async (req, res) => {
       expiresIn: '1h', // Set an appropriate expiration time
     });
 
-    res.status(200).json({ status: 'SUCCESS', message: `${user.Name} logged in successfully`, jwtToken });
+
+    res.status(200).json({ status: 'SUCCESS',
+     message: `${user.Name} logged in successfully`, jwtToken , 
+      recruiterName: user.name, // Include the recruiter's name in the response
+     });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Login failed' });
@@ -104,6 +113,9 @@ app.use((err, req, res, next) => {
   console.error(err); // Log the error for debugging purposes
   res.status(500).json({ message: 'Something went wrong! Please try again later.' });
 });
+
+
+app.use(jobadd)
 
 const PORT = process.env.PORT || 4000;
 
