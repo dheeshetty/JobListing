@@ -1,0 +1,114 @@
+.registration-page {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+   
+  }
+
+  h1,h3{
+    text-align: center;
+  }
+
+
+  .left-side {
+    flex: 1;
+    padding: 20px; /* Change the background color as needed */
+  }
+  
+  .right-side {
+    flex: 1;
+   
+  }
+  
+  .registration-form {
+    max-width: 300px;
+    margin: 0 auto;
+  }
+  
+  .form-group {
+    margin-bottom: 30px;
+  }
+  
+  input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .banner-image {
+    max-width: 100%;
+    height: auto;
+  }
+  /* Add these styles in your register.css file */
+
+.privacy-policy-label {
+    position: relative;
+    top: -15px;
+    padding-left: 35px; /* Add space for the checkbox */
+    cursor: pointer;
+    user-select: none;
+  }
+  
+  .privacy-policy-label input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+  
+  .checkmark {
+    position: absolute;
+    left: 0;
+    top: 0px;
+    height: 20px; /* Adjust the height as needed */
+    width: 20px; /* Adjust the width as needed */
+    background-color: #ccc; /* Unchecked background color */
+    border: 1px solid #000; /* Border around the checkbox */
+  }
+  
+  /* On mouse-over, add a grey background color */
+  .privacy-policy-label:hover input ~ .checkmark {
+    background-color: #ccc;
+  }
+  
+  /* When the checkbox is checked, add a blue background */
+  .privacy-policy-label input:checked ~ .checkmark {
+    background-color: #2196F3;
+  }
+  
+  /* Create the checkmark (check icon) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the checkmark when the checkbox is checked */
+  .privacy-policy-label input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  /* Style the checkmark/indicator */
+  .privacy-policy-label .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+  
+
+  
