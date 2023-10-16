@@ -1,9 +1,9 @@
 // Login.js
 import React, { useState } from 'react';
-import axios from 'axios';
 import bannerImage from '../../assets/banner.jpg';
-import ('./login.css');
-
+import './login.css';
+import {loginUser} from '../../apis/auth';
+import { useNavigate } from 'react-router-dom';
 
 
 const Login = () => {
@@ -17,19 +17,21 @@ const Login = () => {
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:4000/login', formData);
+      const response = await  loginUser(formData);
       // Assuming the backend sends a token and user name in the response on successful login
-      const { jwtToken, recruiterName } = response.data;
+      const { jwtToken, recruiterName } = response;
 
       // Store the token and user name in localStorage
       localStorage.setItem('token', jwtToken);
       localStorage.setItem('user', recruiterName);
 
       // Redirect to another page (e.g., the home page)
+      navigate('/HomePage');
       // You can use React Router for navigation.
       console.log('Login success');
     } catch (error) {
@@ -37,45 +39,45 @@ const Login = () => {
       console.error('Login failed:', error);
     }
   };
-
+  
   return (
     <div className="login-page">
-    <div className="left-side">
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit} className="login-form">
-        <div className="form-group">
-          <input
-            type="email"
-            name="Email"
-            id="Email"
-            value={Email}
-            onChange={handleChange}
-            placeholder="Email"
-            required
-          />
-        </div>
-        <div className="form-group">
-          <input
-            type="password"
-            name="Password"
-            id="Password"
-            value={Password}
-            onChange={handleChange}
-            placeholder="Password"
-            required
-          />
-        </div>
-        <button type="submit">Login</button>
-        <p>Don't have an account? <a href="/register">Sign Up</a></p>
-      </form>
+      <div className="left-side">
+        <h2>Login</h2>
+        <form onSubmit={handleSubmit} className="login-form">
+          <div className="form-group">
+            <input
+              type="email"
+              name="Email"
+              id="Email"
+              value={Email}
+              onChange={handleChange}
+              placeholder="Email"
+              required
+            />
+          </div>
+          <div className="form-group">
+            <input
+              type="password"
+              name="Password"
+              id="Password"
+              value={Password}
+              onChange={handleChange}
+              placeholder="Password"
+              required
+            />
+          </div>
+          <button type="submit">Login</button>
+          <p>Don't have an account? <a href="/register">Sign Up</a></p>
+        </form>
       </div>
       <div className="right-side">
-      <img
-        src={bannerImage}
-        alt="Banner"
-        className="banner-image"
-      />
-    </div>
+        <img
+          src={bannerImage}
+          alt="Banner"
+          className="banner-image"
+        />
+      </div>
     </div>
   );
 };

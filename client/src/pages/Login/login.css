@@ -1,5 +1,7 @@
 /* login.css */
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
 /* Center the login form */
 .login-page {
     display: flex;
@@ -28,12 +30,13 @@
   }
   
   .form-group input {
-    width: 100%;
+    width: 350px;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
     outline: none;
+    font-family: 'Roboto';
   }
   
   .form-group button {

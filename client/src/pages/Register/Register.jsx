@@ -1,8 +1,10 @@
-// Registration.js
+  // Registration.js
 import React, { useState  } from 'react';
-import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import bannerImage from '../../assets/banner.jpg';
-import ('./register.css');
+import './register.css';
+import  {registerUser} from '../../apis/auth';
+
 
 
 const Registration = () => {
@@ -15,25 +17,30 @@ const Registration = () => {
 
   const { Name, Email, Mobile, Password } = formData;
 
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
   
  
+  console.log('Request Data:', formData);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:4000/register', formData);
+      const response = await registerUser(formData);
       // Assuming the backend sends a token and user name in the response on successful registration
-      const { jwtToken, recruiterName } = response.data;
+      const { jwtToken, recruiterName } = response;
 
       // Store the token and user name in localStorage
       localStorage.setItem('token', jwtToken);
       localStorage.setItem('user', recruiterName);
 
       // Redirect to another page (e.g., the home page)
+      navigate('/HomePage');
       // You can use React Router for navigation.
+      console.log('Registerd successfully')
     } catch (error) {
       // Handle registration error (e.g., display an error message)
       console.error('Registration failed:', error);
@@ -84,6 +91,7 @@ const Registration = () => {
           />
           </div>
             <label className="privacy-policy-label">
+            <br></br>
             <input
             type="checkbox"
             name="privacyPolicy"
