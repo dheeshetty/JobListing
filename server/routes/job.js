@@ -1,4 +1,4 @@
-
+//job.js 
 const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
@@ -9,30 +9,31 @@ const Job = require('../model/job'); // Import the Job model
 
 dotenv.config();
 
-// Controller for creating a job post
-const createJob = async (req, res) => {
+//  creating a job post
+router.post('/jobpost', authMiddleware, async (req, res) => {
   try {
-    const skillsRequired = ["Skill", "Skill 2", "Skill 3"];
+    
     const { companyName,logoURL,
-        position,salary,JobType,
+        jobTitle,salary,JobType,
         remote,location,description,
-        about,skillsRequired: skillsArray, 
-        recruiterName/* Add other required fields */ } = req.body;
+        about,skill, 
+        recruiterName } = req.body;
 
     // Check if required fields are provided
     if ( !companyName || !logoURL ||
-        !position || !salary || !JobType ||
+        !jobTitle || !salary || !JobType ||
         !remote || !location || !description ||
-        !about || !skillsRequired || 
-        !recruiterName/* Check other required fields */) {
+        !about || !skill || 
+        !recruiterName) {
       return res.status(400).json({ message: 'All required fields must be provided' });
     }
 
+    const remoteValue = req.body.remote === 'on';
     // Create a new job post
     const newJob = new Job({ companyName,logoURL,
-        position,salary,JobType,
+        jobTitle,salary,JobType,
         remote,location,description,
-        about,skillsRequired: skillsArray, 
+        about,skill, 
         recruiterName /* Add other required fields */ });
     await newJob.save();
 
@@ -41,13 +42,9 @@ const createJob = async (req, res) => {
     console.error(error);
     res.status(500).json({ message: 'Job post creation failed' });
   }
-};
+});
 
-// Combine route definition and controller
-router.post('/jobpost', authMiddleware, createJob);
-
-
-router.patch('/jobpost/:jobId', async (req, res) => {
+router.put('/jobpost/:jobId',authMiddleware, async (req, res) => {
     const jobId = req.params.jobId;
     const updatedJobData = req.body; // Data to update the job post
   
@@ -70,15 +67,15 @@ router.patch('/jobpost/:jobId', async (req, res) => {
     }
   });
 
-
-  router.get('/jobpost', async (req, res) => {
+  router.get('/get-job', async (req, res) => {
     try {
-      const { skills, jobTitle } = req.query;
+      const { skill, jobTitle } = req.query;
   
       // Define a filter object based on the query parameters
       const filter = {};
-      if (skills) {
-        filter.skillsRequired = { $in: skills.split(',') };
+      if (skill) {
+        filter.skill = { $in: skill.split(',') };
+        filter.skill = { $regex: new RegExp(skill.trim(), 'i') };
       }
       if (jobTitle) {
         filter.jobTitle = { $regex: jobTitle, $options: 'i' };
@@ -93,6 +90,22 @@ router.patch('/jobpost/:jobId', async (req, res) => {
       res.status(500).json({ message: 'Error listing jobs' });
     }
   });
+  
+  
+
+  router.get('/job-desc/:id', async(req,res) =>{
+    try{ const jobId = req.params.id;
+          const jobDetails = await Job.findById(jobId);
+          if (!jobDetails) {
+            return res.status(404).json({ message: 'Job not found' });
+          }
+          res.json({ data: jobDetails});
+
+    }catch(error){
+      console.error(error);
+      res.status(500).json({message: 'Error while fetching the job details'})
+    }
+  })
 
 
 module.exports = router;

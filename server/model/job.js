@@ -1,3 +1,4 @@
+//model job.js
 const mongoose = require('mongoose');
 
 const jobSchema = new mongoose.Schema({
@@ -6,7 +7,7 @@ const jobSchema = new mongoose.Schema({
     required: true,
   },
   logoURL: String,
-  position: {
+  jobTitle: {
     type: String,
     required: true,
   },
@@ -20,7 +21,7 @@ const jobSchema = new mongoose.Schema({
     required: true,
   },
   remote: {
-    type: Boolean,
+    type: String,
     required: true,
   },
   location: String,
@@ -29,7 +30,7 @@ const jobSchema = new mongoose.Schema({
     required: true,
   },
   about: String,
-  skillsRequired: {
+  skill: {
     type: [String],
     required: true,
   },
