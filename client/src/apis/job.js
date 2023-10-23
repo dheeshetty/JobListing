@@ -21,3 +21,24 @@ export const jobPost = async (jobPostdescription, headers) => {
         console.log(error);
     }
 }
+
+
+
+
+// APIs/job.js
+export const fetchJobs = async (searchQuery) => {
+  try {
+    const response = await fetch(`${backendUrl}/get-job?${searchQuery}`);
+    if (!response.ok) {
+      throw new Error(`Request failed with status ${response.status}`);
+    }
+
+    // Handle the response data and return it
+    const data = await response.json();
+
+    return data; // Return the data
+  } catch (error) {
+    throw new Error(`API call failed: ${error.message}`);
+  }
+};
+

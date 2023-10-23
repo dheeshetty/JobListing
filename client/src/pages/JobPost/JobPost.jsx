@@ -5,7 +5,7 @@ export default function JobPost() {
   const [jobPostDescription, setJobPostDescription] = useState({
     companyName: '',
     logoURL: '',
-    position: '',
+    jobTitle: '',
     salary: '', // Should match the expected data type on the server
     JobType: 'Full-Time',
     remote: false,
@@ -78,8 +78,8 @@ export default function JobPost() {
 
         <input
           type="text"
-          name="position"
-          value={jobPostDescription.position}
+          name="jobTitle"
+          value={jobPostDescription.jobTitle}
           onChange={handleChange}
           placeholder="Position"
           required

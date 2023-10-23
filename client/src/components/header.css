@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,500&family=Noto+Sans+NKo+Unjoined:wght@500&display=swap');
+.header {
+    background-color:  #ED5353;
+    border-bottom-left-radius: 35px;
+    border-bottom-right-radius: 35px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px 20px;
+  }
+  
+  .title {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    position: relative;
+    top: 0px;
+    left: 40%;
+  }
+  
+  .user-info, .login-register {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    left: 78%;
+    top: 5%;
+    
+  }
+  
+  .user-greeting {
+    color: white;
+    margin-right: 10px;
+    
+  }
+  .login, .signup{
+    background-color: #ED5353;
+    border-style: solid;
+    margin-right: 30px;
+    border-radius: 10px;
+    justify-content: space-between;
+    font-family: 'DM Sans';
+    font-size: 18px;
+
+  }
+  .login{
+    width: 95px;
+    height: 45px;
+    padding: 0px 10px;
+    
+  }
+  .signup{
+    padding: 0px 10px;
+    background-color: white;
+    height: 50px;
+    color: #ED5353;
+    width: 95px;
+  }
+  .logout{
+    margin-right: 30px;
+    
+    color: white;  
+    font-family: 'DM Sans';
+    font-size: 20px;
+    font-weight: 20;
+    position: relative;
+    top: -20px;
+    left: -20px;
+  }
+  .greeting{
+    color: white;
+    font-family: 'DM Sans';
+    font-size: 20px;
+    font-weight: 20;
+    position: relative;
+    top: -20px;
+    left: -20px;
+
+  }
+
+  .avatar {
+    position: relative;
+    top: -20px;
+    left: -20px;
+    width: 35px;
+    height: 35px;
+  
+    padding-left: 15px;
+  
+  }
+  
+  

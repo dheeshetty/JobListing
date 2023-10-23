@@ -1,10 +1,8 @@
-// Login.js
 import React, { useState } from 'react';
 import bannerImage from '../../assets/banner.jpg';
 import './login.css';
-import {loginUser} from '../../apis/auth';
+import { loginUser } from '../../apis/auth';
 import { useNavigate } from 'react-router-dom';
-
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -12,17 +10,19 @@ const Login = () => {
     Password: '',
   });
 
+  const [error, setError] = useState(''); // Error message state
+
   const { Email, Password } = formData;
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await  loginUser(formData);
+      const response = await loginUser(formData);
       // Assuming the backend sends a token and user name in the response on successful login
       const { jwtToken, recruiterName } = response;
 
@@ -36,14 +36,16 @@ const Login = () => {
       console.log('Login success');
     } catch (error) {
       // Handle login error (e.g., display an error message)
+      setError('Invalid email or password. Please try again.');
       console.error('Login failed:', error);
     }
   };
-  
+
   return (
     <div className="login-page">
       <div className="left-side">
         <h2>Login</h2>
+        {error && <p className="error-message">{error}</p>}
         <form onSubmit={handleSubmit} className="login-form">
           <div className="form-group">
             <input
@@ -68,7 +70,9 @@ const Login = () => {
             />
           </div>
           <button type="submit">Login</button>
-          <p>Don't have an account? <a href="/register">Sign Up</a></p>
+          <p>
+            Don't have an account? <a href="/register">Sign Up</a>
+          </p>
         </form>
       </div>
       <div className="right-side">
