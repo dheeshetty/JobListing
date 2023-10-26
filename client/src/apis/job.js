@@ -1,26 +1,57 @@
 import axios from "axios";
 const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
-export const jobPost = async (jobPostdescription, headers) => {
-    try {
-        const reqUrl = `${backendUrl}/jobpost`;
-        const reqPayload = {
-            ...jobPostdescription,
-        };
-        
-        // Add your JWT token to the headers
-        const authHeaders = {
-            ...headers,
-            Authorization: `${localStorage.getItem('token')}`, // Retrieve the JWT token from local storage
-        };
 
-        const response = await axios.post(reqUrl, reqPayload, { headers: authHeaders });
+// Function to create a new job
+export const createJob = async (jobDetails, headers) => {
+  
+  try{
+    const url = `${backendUrl}/jobpost`;
+    const options = {
+      method: 'POST', ...jobDetails
+    };
+      const authHeaders = {
+        ...headers,
+        Authorization: `${localStorage.getItem('token')}`, // Retrieve the JWT token from local storage
+    };
+  
+    const response = await axios.post(url, options, { headers: authHeaders });
+          console.log('is done')
+          return response;
+     
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+// Function to update a job
+export const updateJob = async (jobId, jobDetails, headers) => {
+  try{
+  const url = `${backendUrl}/jobpost/${jobId}`;
+  const options = {
+    method: 'PUT', ...jobDetails
+  };
+    const authHeaders = {
+      ...headers,
+      Authorization: `${localStorage.getItem('token')}`, // Retrieve the JWT token from local storage
+  };
+
+  const response = await axios.post(url, options, { headers: authHeaders });
         console.log('is done')
         return response;
-    } catch (error) {
-        console.log(error);
-    }
-}
+   
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// Function to fetch job details by ID
+export const fetchJobById = async (jobId) => {
+  const url = `${backendUrl}/jobpost/${jobId}`;
+  const response = await fetch(url);
+  return response.json();
+};
+
 
 
 

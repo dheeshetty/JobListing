@@ -224,7 +224,7 @@ const Homepage = () => {
                       text=" View details"
                       bgColor="#ED5353"
                       textColor="#FFF"
-                      onClick={() => navigate(`/job/${job._id}`)}
+                      onClick={() => navigate(`/details/${job._id}`)}
                     />
                   </div>
                 </div>

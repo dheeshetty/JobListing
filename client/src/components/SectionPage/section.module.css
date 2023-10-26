@@ -1,0 +1,42 @@
+.AuthPage {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    overflow: hidden;
+  }
+  
+  .LeftSection {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .RightSection {
+    flex: 1;
+    position: relative;
+  }
+  .RightSection h2 {
+    color: #fff;
+    width: 80%;
+    margin: auto;
+    font-size: 2em;
+    font-weight: 600;
+    position: absolute;
+    left: 50%;
+    top: 10%;
+    transform: translate(-50%, -10%);
+  }
+  
+  .RightSection img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  

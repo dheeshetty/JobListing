@@ -1,86 +1,124 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,500&family=Noto+Sans+NKo+Unjoined:wght@500&display=swap');
 .header {
-    background-color:  #ED5353;
-    border-bottom-left-radius: 35px;
-    border-bottom-right-radius: 35px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 50px 20px;
+  position: relative;
+  height: 15vh;
+  border-radius: 0 0 40px 40px;
+  background: #ed5353;
+  overflow: hidden;
+  display: flex;
+  color: #fff;
+  align-items: center;
+
+  padding: 0 5%;
+    
   }
-  
-  .title {
-    font-size: 24px;
-    font-weight: bold;
-    color: white;
+  .navbar{
     position: relative;
-    top: 0px;
-    left: 40%;
+  height: 15vh;
+  border-radius: 0 0 40px 40px;
+  background: #ed5353;
+  overflow: hidden;
+  display: flex;
+  color: #fff;
+  align-items: center;
+
+  padding: 0 5%;
+    
   }
-  
-  .user-info, .login-register {
-    display: flex;
-    align-items: center;
+
+
+  .right {
+    z-index: 2;
     position: absolute;
-    left: 78%;
-    top: 5%;
-    
+    bottom: 2%;
+    left: -2%;
+  }
+  .middle {
+    z-index: 2;
+    position: absolute;
+    top: -30%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .left {
+    z-index: 2;
+    transform: scale(0.8);
+    position: absolute;
+    bottom: -15%;
+    right: -2%;
   }
   
-  .user-greeting {
-    color: white;
-    margin-right: 10px;
-    
-  }
-  .login, .signup{
-    background-color: #ED5353;
-    border-style: solid;
-    margin-right: 30px;
-    border-radius: 10px;
-    justify-content: space-between;
-    font-family: 'DM Sans';
-    font-size: 18px;
 
-  }
-  .login{
-    width: 95px;
-    height: 45px;
-    padding: 0px 10px;
-    
-  }
-  .signup{
-    padding: 0px 10px;
-    background-color: white;
-    height: 50px;
-    color: #ED5353;
-    width: 95px;
-  }
-  .logout{
-    margin-right: 30px;
-    
-    color: white;  
-    font-family: 'DM Sans';
-    font-size: 20px;
-    font-weight: 20;
-    position: relative;
-    top: -20px;
-    left: -20px;
-  }
-  .greeting{
-    color: white;
-    font-family: 'DM Sans';
-    font-size: 20px;
-    font-weight: 20;
-    position: relative;
-    top: -20px;
-    left: -20px;
 
+
+
+
+
+  .navbar > div:nth-child(1) {
+    font-size: 35px;
+    padding: 0px;
+    margin: 10px 0px 0px 80px;
+    color: white;
   }
+  .login-register {
+    display: flex;
+    align-items: center;
+    margin-right: 80px;
+  }
+
+  .user-info {
+    display: flex;
+  z-index: 20;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  gap: 1em;
+  }
+  
+
+
+.user-info > p {
+  font-weight: 500;
+  font-size: 23px;
+  line-height: 144.02%;
+  margin-left: 20px;
+  text-align: center;
+  cursor: pointer;
+  color: #ffffff;
+}
+.login {
+  border: 2px solid #ffffff;
+  border-radius: 10px;
+  margin-right: 40px;
+  margin-top: 5px;
+  box-shadow: 0px 7px 13px rgba(255, 32, 32, 0.25);
+  border-radius: 3px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 25px;
+  background-color: #ff6b6b;
+  color: white;
+  padding: 0px 20px;
+}
+.signup {
+  border: 2px solid white;
+  border-radius: 10px;
+  padding: 10px 20px 10px 20px;
+  box-shadow: 0px 7px 13px rgba(255, 32, 32, 0.25);
+  border-radius: 3px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 25px;
+  background-color: white;
+  color: #ff6b6b;
+}
+
+
 
   .avatar {
     position: relative;
-    top: -20px;
-    left: -20px;
+    top: 0px;
+    left: 0px;
     width: 35px;
     height: 35px;
   

@@ -1,6 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
+import left from '../assets/left.png';
+import middle from '../assets/middle.png';
+import right  from '../assets/right.png';
 import './header.css';
 import avatar from '../assets/avatar.png'
 
@@ -10,8 +13,13 @@ const Header = ({ user, onLogout }) => {
   return (
     <header>
       <div className='header'>
-        <Container>
-          <div className="title">Jobfinder</div>
+        <div className='navbar'>
+        <img src={right} className='right' alt="" />
+        <img src={middle} className='middle' alt="" />
+        <img src={left} className='left' alt="" />
+          <div className="title">
+            <h5>Jobfinder</h5>
+            </div>
           {user ? (
             <div className="user-info">
               <p className='logout' onClick={onLogout}>Logout</p>
@@ -24,7 +32,7 @@ const Header = ({ user, onLogout }) => {
                <button onClick={() => {navigate("../register")}} className='signup'>Register</button>
             </div>
           )}
-        </Container>
+        </div>
       </div>
     </header>
   );
