@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import bannerImage from '../../assets/banner.jpg';
-import './login.css';
+import './login.css'; // You may need to create a corresponding CSS file for your component.
 import { loginUser } from '../../apis/auth';
 import { useNavigate } from 'react-router-dom';
 
@@ -36,18 +36,19 @@ const Login = () => {
       console.log('Login success');
     } catch (error) {
       // Handle login error (e.g., display an error message)
-      setError('Invalid email or password. Please try again.');
+      setError('Invalid email or password. Please try again');
       console.error('Login failed:', error);
     }
   };
 
   return (
-    <div className="login-page">
-      <div className="left-side">
-        <h2>Login</h2>
-        {error && <p className="error-message">{error}</p>}
-        <form onSubmit={handleSubmit} className="login-form">
-          <div className="form-group">
+    <div className="container">
+    <div className="leftDiv" style={{ alignItems: "center" }}>
+      <form onSubmit={handleSubmit} className="userDetails" style={{ padding: "0px" }}>
+      <div className="userDetails">
+      <h1>Create an account</h1>
+      <p>Your Personal Job Finder is Here</p>
+          
             <input
               type="email"
               name="Email"
@@ -57,8 +58,8 @@ const Login = () => {
               placeholder="Email"
               required
             />
-          </div>
-          <div className="form-group">
+          {error && <p className="error-message">{error.Email}</p>}
+          
             <input
               type="password"
               name="Password"
@@ -68,21 +69,22 @@ const Login = () => {
               placeholder="Password"
               required
             />
-          </div>
-          <button type="submit">Login</button>
+          {error && <p className="error-message">{error.Password}</p>}
+          <div className="createAccountDiv">
+          <button type="submit" className="login-button">Login</button> {/* Add a 'login-button' class */}
           <p>
             Don't have an account? <a href="/register">Sign Up</a>
           </p>
+          </div>
+          </div>
         </form>
       </div>
-      <div className="right-side">
-        <img
-          src={bannerImage}
-          alt="Banner"
-          className="banner-image"
-        />
+      <div className="rightDiv">
+    <img src={bannerImage} alt="Banner" className="banner-image" style={{height: "800px" ,width: "89vh"}}/>
+    <p>Your Personal Job Finder</p>
       </div>
     </div>
+    
   );
 };
 

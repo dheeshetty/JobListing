@@ -12,26 +12,30 @@ const Header = ({ user, onLogout }) => {
 
   return (
     <header>
-      <div className='header'>
+      
         <div className='navbar'>
         <img src={right} className='right' alt="" />
         <img src={middle} className='middle' alt="" />
         <img src={left} className='left' alt="" />
-          <div className="title">
-            <h5>Jobfinder</h5>
-            </div>
+        
+          <div className="NavItem">
+            <h3>Jobfinder</h3>
+            
+            <div className='RightNavItem'>
           {user ? (
-            <div className="user-info">
+            <div className='user-info'>
               <p className='logout' onClick={onLogout}>Logout</p>
               <p className='greeting'>Hello! {user}</p>  
-              <img className='avatar' src={avatar} alt="Avatar"></img>       
-            </div>
+              <img className='avatar' src={avatar} alt="Avatar"></img>
+                    
+              </div>
           ) : (
-            <div className="login-register">
+            <>
                <button onClick={() => {navigate("../login")}} className='login' >Login </button>
                <button onClick={() => {navigate("../register")}} className='signup'>Register</button>
-            </div>
+            </>
           )}
+          </div>
         </div>
       </div>
     </header>

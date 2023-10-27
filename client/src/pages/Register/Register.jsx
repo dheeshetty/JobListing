@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+
+import React, {useEffect,  useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import bannerImage from '../../assets/banner.jpg';
 import './register.css';
@@ -44,24 +45,23 @@ const Registration = () => {
   };
 
   return (
-    <div className="registration-page">
-      <div className="left-side">
-        <h1>Create an Account</h1>
-        <h3>Your Personal Job finder is here</h3>
-        {error && <p className="error-message">{error}</p>}
-        <form onSubmit={handleSubmit} className="registration-form">
-          <div className="form-group">
+    <div className="container">
+      <div className="leftDiv">
+        <form className="userDetailsDiv" style={{ padding: "0px" }} onSubmit={handleSubmit}>
+          <div className="userDetailsDiv">
+            <h1>Create an Account</h1>
+            <p>Your Personal Job Finder is Here</p>
+
             <input
+              minLength={5}
+              required
               type="text"
-              name="Name"
-              id="Name"
               value={Name}
               onChange={handleChange}
+              name="Name"
               placeholder="Name"
-              required
             />
-          </div>
-          <div className="form-group">
+            {error && <p className="error-message">{error.Name}</p>} {/* Display error message as in your code */}
             <input
               type="email"
               name="Email"
@@ -71,8 +71,7 @@ const Registration = () => {
               placeholder="Email"
               required
             />
-          </div>
-          <div className="form-group">
+            {error && <p className="error-message">{error.Email}</p>}
             <input
               type="tel"
               name="Mobile"
@@ -82,8 +81,7 @@ const Registration = () => {
               placeholder="Mobile"
               required
             />
-          </div>
-          <div className="form-group">
+            {error && <p className="error-message">{error.Mobile}</p>}
             <input
               type="password"
               name="Password"
@@ -93,22 +91,34 @@ const Registration = () => {
               placeholder="Password"
               required
             />
-          </div>
-          <label className="privacy-policy-label">
-            <br></br>
-            <input type="checkbox" name="privacyPolicy" required /> I agree to the Privacy Policy
-            <span className="checkmark"></span>
-          </label>
+            {error && <p className="error-message">{error.Password}</p>}
+            <div className="termConditionDiv">
+              <input
+                onChange={handleChange}
+                required
+                type="checkbox"
+                name="privacyPolicy"
+                value="I agree to the Privacy Policy"
+              />
+              <p>By creating an account, I agree to our terms of use and privacy policy</p>
+            </div>
 
-          <button type="submit">Register</button>
-          <p>Already have an account? <a href="/login">Sign In</a></p>
+            <div className="createAccountDiv">
+              <button type="submit">Create Account</button>
+              <p>Already have an account? <a href="/login">Sign In</a></p>
+            </div>
+          </div>
         </form>
       </div>
-      <div className="right-side">
-        <img src={bannerImage} alt="Banner" className="banner-image" />
+
+      <div className="rightDiv">
+      
+        <img src={bannerImage} alt="Banner" className="banner" style={{height: "800px" ,width: "89vh"}}/>
+        <p>Your Personal Job Finder</p>
       </div>
     </div>
   );
 };
+
 
 export default Registration;

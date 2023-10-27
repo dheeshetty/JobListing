@@ -1,118 +1,105 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+NKo+Unjoined:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Noto+Sans+NKo+Unjoined:wght@500&display=swap');
+.container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  
+}
+.leftDiv {
+  display: flex;
+  width: 65%;
+}
+h1{
+  font-family: 'DM Sans';
+  font-weight: 700;
+}
+.userDetailsDiv {
+  width: 100%;
+ padding-right: 100px;
+ padding-top: 90px;
+  display: flex;
+  flex-direction: column;
+}
+.userDetailsDiv > p {
+  font-family: 'DM Sans';
+  font-weight: 500;
+  color: #525252;
+  font-size: 19px;
 
-.registration-page {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 100vh;
-   
-  }
-
-  h1,h3{
-    text-align: center;
-    font-family: 'Noto Sans NKo Unjoined', sans-serif;
-  }
+}
+.userDetailsDiv > input {
+  font-size: 20px;
+  padding: 9px;
+  margin-bottom: 18px;
+  width: 90%;
+}
 
 
-  .left-side {
-    flex: 1;
-    padding: 20px; /* Change the background color as needed */
-  }
-  
-  .right-side {
-    flex: 1;
-   
-  }
-  
-  .registration-form {
-    max-width: 300px;
-    margin: 0 auto;
-  }
-  
-  .form-group {
-    margin-bottom: 30px;
-  }
-  
-  input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  button {
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .banner-image {
-    max-width: 100%;
-    height: auto;
-  }
-  /* Add these styles in your register.css file */
 
-.privacy-policy-label {
-    position: relative;
-    top: -15px;
-    padding-left: 35px; /* Add space for the checkbox */
-    cursor: pointer;
-    user-select: none;
-  }
+.termConditionDiv {
+  display: flex;
+  flex-direction: row;
+  color: #525252;
   
-  .privacy-policy-label input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-  }
+}
+.termConditionDiv > input {
+  margin: 8px 10px 20px 0px;
+  width: 20px;
+  height: 30px;
+ 
+}
+.termConditionDiv > p {
+  margin-top: 13px;
+  margin-bottom: 20px;
+  font-family: 'DM Sans';
+  font-weight: 400;
+  color: #525252;
+}
+.createAccountDiv > button {
+  border: none;
+  cursor: pointer;
+  padding: 8px 30px 12px 30px;
+  font-size: 25px;
+  background: #ed5353;
+  border-radius: 5px;
+  color: white;
+  height: 50px;
+  font-family: 'DM Sans';
+  font-weight: 500;
   
-  .checkmark {
-    position: absolute;
-    left: 0;
-    top: 0px;
-    height: 20px; /* Adjust the height as needed */
-    width: 20px; /* Adjust the width as needed */
-    background-color: #ccc; /* Unchecked background color */
-    border: 1px solid #000; /* Border around the checkbox */
-  }
-  
-  /* On mouse-over, add a grey background color */
-  .privacy-policy-label:hover input ~ .checkmark {
-    background-color: #ccc;
-  }
-  
-  /* When the checkbox is checked, add a blue background */
-  .privacy-policy-label input:checked ~ .checkmark {
-    background-color: #2196F3;
-  }
-  
-  /* Create the checkmark (check icon) */
-  .checkmark:after {
-    content: "";
-    position: absolute;
-    display: none;
-  }
-  
-  /* Show the checkmark when the checkbox is checked */
-  .privacy-policy-label input:checked ~ .checkmark:after {
-    display: block;
-  }
-  
-  /* Style the checkmark/indicator */
-  .privacy-policy-label .checkmark:after {
-    left: 9px;
-    top: 5px;
-    width: 5px;
-    height: 10px;
-    border: solid white;
-    border-width: 0 2px 2px 0;
-    transform: rotate(45deg);
-  }
-  
+}
+.createAccountDiv > p {
+  font-size: 20px;
+  font-family: 'DM Sans';
+  font-weight: 500;
+  color: #525252;
+  margin: 15px 20px 20px 0px;
+}
+a{
+  color: black;
+  font-weight: 500;
+  font-weight: bold;
+}
+
+.rightDiv {
+  display: flex;
+  width: 40%;
+  position: relative; /* Add this line to make it a positioned container */
+}
+
+.rightDiv p {
+  position: absolute; /* Change this to absolute positioning */
+  top: 10%; /* Adjust the top position as needed */
+  left: 30%; /* Adjust the left position as needed */
+  transform: translate(0, -50%); /* Vertically center the text */
+  font-size: larger;
+  color: aliceblue;
+  font-family: 'DM Sans';
+  font-weight: 500;
+  font-size: 28px;
+  white-space: nowrap; /* Prevent text from wrapping */
+}
+
 
   
+

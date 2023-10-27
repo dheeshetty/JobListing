@@ -1,59 +1,85 @@
-/* login.css */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Noto+Sans+NKo+Unjoined:wght@500&display=swap');
+.container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  
+}
+.leftDiv {
+  display: flex;
+  width: 65%;
+}
+h1{
+  font-family: 'DM Sans';
+  font-weight: 700;
+}
+.userDetails {
+  width: 100%;
+ padding-right: 100px;
+ position: relative;
+  top: -50px;
+  display: flex;
+  flex-direction: column;
+}
+.userDetails > p {
+  font-family: 'DM Sans';
+  font-weight: 500;
+  color: #525252;
+  font-size: 19px;
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+}
+.userDetails > input {
+  font-size: 20px;
+  padding: 9px;
+  margin-bottom: 18px;
+  width: 90%;
+}
 
-/* Center the login form */
-.login-page {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 100vh;
-  }
+.createAccountDiv > button {
+  border: none;
+  cursor: pointer;
+  padding: 8px 30px 12px 30px;
+  font-size: 25px;
+  background: #ed5353;
+  border-radius: 5px;
+  color: white;
+  height: 50px;
+  font-family: 'DM Sans';
+  font-weight: 500;
   
-  .login-form {
-    text-align: center;
-    max-width: 400px;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
+}
+.createAccountDiv > p {
+  font-size: 20px;
+  font-family: 'DM Sans';
+  font-weight: 500;
+  color: #525252;
+  margin: 15px 20px 20px 0px;
+}
+a{
+  color: black;
+  font-weight: 500;
+  font-weight: bold;
+}
+
+.rightDiv {
+  display: flex;
+  width: 40%;
+  position: relative; /* Add this line to make it a positioned container */
+}
+
+.rightDiv p {
+  position: absolute; /* Change this to absolute positioning */
+  top: 10%; /* Adjust the top position as needed */
+  left: 30%; /* Adjust the left position as needed */
+  transform: translate(0, -50%); /* Vertically center the text */
+  font-size: larger;
+  color: aliceblue;
+  font-family: 'DM Sans';
+  font-weight: 500;
+  font-size: 28px;
+  white-space: nowrap; /* Prevent text from wrapping */
+}
+
+
   
-  .login-form h2 {
-    margin-bottom: 20px;
-    color: #333;
-  }
-  
-  .form-group {
-    margin-bottom: 15px;
-  }
-  
-  .form-group input {
-    width: 350px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-    outline: none;
-    font-family: 'Roboto';
-  }
-  
-  .form-group button {
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .form-group button:hover {
-    background-color: #0056b3;
-  }
-  
-  /* Add additional styling as needed */
-  
+
