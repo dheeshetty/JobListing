@@ -14,9 +14,9 @@ dotenv.config();
 const app = express();
 
 // Middleware
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json()); // Add JSON parsing middleware
-app.use(cors({ origin: 'http://localhost:4000', methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+app.use(cors({ origin: 'http://localhost:3000', methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
 preflightContinue: false,
 optionsSuccessStatus: 204, }));
 

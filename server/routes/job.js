@@ -7,6 +7,7 @@ const bcrypt = require('bcrypt');
 const authMiddleware = require('../middleware/authMiddleware');
 const Job = require('../model/job'); // Import the Job model
 
+
 dotenv.config();
 
 //  creating a job post
@@ -14,27 +15,31 @@ router.post('/jobpost', authMiddleware, async (req, res) => {
   try {
     
     const { companyName,logoURL,
-        jobTitle,salary,JobType,
+        jobTitle,salary,jobType,
         remote,location,description,
         about,skill, 
-        recruiterName } = req.body;
+        information } = req.body;
 
     // Check if required fields are provided
     if ( !companyName || !logoURL ||
-        !jobTitle || !salary || !JobType ||
-        !remote || !location || !description ||
-        !about || !skill || 
-        !recruiterName) {
+        !jobTitle||!skill ) {
       return res.status(400).json({ message: 'All required fields must be provided' });
     }
 
-    const remoteValue = req.body.remote === 'on';
+    // If jobType is "remote", set location to empty string
+    const updatedlocation = location === '' ? 'Remote' : location;
+
+    const updatedLogoURL = req.body.logoURL
+      ? req.body.logoURL
+      : 'https://eu.ui-avatars.com/api/?name=John+Doe&size=250';
+
+
     // Create a new job post
-    const newJob = new Job({ companyName,logoURL,
-        jobTitle,salary,JobType,
-        remote,location,description,
+    const newJob = new Job({ companyName,logoURL: updatedLogoURL,
+        jobTitle,salary,jobType,
+        remote ,location: updatedlocation,description,
         about,skill, 
-        recruiterName /* Add other required fields */ });
+        information /* Add other required fields */ });
     await newJob.save();
 
     res.status(201).json({ message: 'Job post created successfully' });
@@ -93,13 +98,13 @@ router.put('/jobpost/:jobId',authMiddleware, async (req, res) => {
   
   
 
-  router.get('/job-desc/:id', async(req,res) =>{
-    try{ const jobId = req.params.id;
-          const jobDetails = await Job.findById(jobId);
-          if (!jobDetails) {
+  router.get('/job/:id', async(req,res) =>{
+    try{ const {id :jobId} = req.params;
+          const job = await Job.findById(jobId);
+          if (!job) {
             return res.status(404).json({ message: 'Job not found' });
           }
-          res.json({ data: jobDetails});
+          res.json({ data: job});
 
     }catch(error){
       console.error(error);

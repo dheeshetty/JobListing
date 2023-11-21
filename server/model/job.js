@@ -6,7 +6,9 @@ const jobSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  logoURL: String,
+  logoURL: {
+    type: String
+  },
   jobTitle: {
     type: String,
     required: true,
@@ -15,30 +17,33 @@ const jobSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  JobType: {
+  jobType: {
     type: String,
-    enum: ['Full-Time', 'Part-Time', 'Contract', 'Freelance'],
     required: true,
   },
   remote: {
     type: String,
     required: true,
   },
-  location: String,
+  location: {
+    type: String,
+  },
   description: {
     type: String,
     required: true,
   },
-  about: String,
+  about: {
+    type: String,
+  },
   skill: {
     type: [String],
     required: true,
   },
-  recruiterName: {
+  information: {
     type: String,
     required: true,
   },
-  // Add other fields as needed
+  createdAt: { type: Date, default: Date.now },// Add other fields as needed
 });
 
 const Job = mongoose.model('Job', jobSchema);
