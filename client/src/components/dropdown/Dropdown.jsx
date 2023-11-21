@@ -16,7 +16,7 @@ const Dropdown = ({ value, onChange, options }) => {
 
   return (
     <div className={classes.Dropdown}>
-      <button className={classes.DropdownButton} onClick={toggleDropdown}>
+      <button className={classes.DropdownButton} onClick={toggleDropdown} text='Skills'>
         {selected} <img src={DropdownArrow} alt="" />{' '}
       </button>
 

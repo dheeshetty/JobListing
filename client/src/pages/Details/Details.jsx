@@ -118,21 +118,21 @@ const Details = () => {
             </span>
           </div>
           <h2>{job?.jobTitle} </h2>
-          <span>{job?.location} | India</span>
+          <h9>{job?.location} | India</h9>
           <div className={classes.JobInfo}>
             <div>
               <span>
-                <img src={Money} alt="" />
-                Salary
+                <img src={Money} alt="" style={{ marginRight: '8px' }}/>
+                Stipend
               </span>
-              <h3>Rs {job?.salary}/month</h3>
+              <h5>Rs {job?.salary}/month</h5>
             </div>
             <div>
               <span>
-                <img src={calender} alt="" />
-                Job Type
+                <img src={calender} alt="" style={{ marginRight: '8px' }}/>
+                Duration
               </span>
-              <h3> {job?.jobType}</h3>
+              <h5>{job?.jobType}</h5>
             </div>
           </div>
 

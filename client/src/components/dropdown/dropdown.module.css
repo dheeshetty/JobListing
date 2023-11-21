@@ -1,18 +1,17 @@
 .Dropdown {
-  width: 15%;
+  width: 30%;
   height: 2.5em;
   display: flex;
-  position: relative;
 
   flex-direction: column;
   border: #cecece 2px solid;
   border-radius: 5px;
   padding: 0.5em;
-  margin: 0.5em 0;
+  margin: 0.3em 0;
 }
 
 .DropdownButton {
-  width: 40%;
+  width: 100%;
   cursor: pointer;
   border: none;
   background-color: transparent;
@@ -21,9 +20,6 @@
   justify-content: space-between;
   align-items: center;
   color: #827e7e;
-  position: relative;
-  top: -10px;
-  left: 10px
 }
 .DropdownButton img {
   margin-left: 0.5em;

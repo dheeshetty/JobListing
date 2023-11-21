@@ -30,13 +30,16 @@ const Login = () => {
       localStorage.setItem('token', jwtToken);
       localStorage.setItem('user', recruiterName);
 
-      // Redirect to another page (e.g., the home page)
+      
       navigate('/HomePage');
       // You can use React Router for navigation.
       console.log('Login success');
     } catch (error) {
-      // Handle login error (e.g., display an error message)
-      setError('Invalid email or password. Please try again');
+      if (error.response && error.response.status === 401) {
+        setError('Invalid email or password. Please try again');
+      } else {
+            setError('An error occurred. Please try again later.');
+      }
       console.error('Login failed:', error);
     }
   };
@@ -46,7 +49,7 @@ const Login = () => {
     <div className="leftDiv" style={{ alignItems: "center" }}>
       <form onSubmit={handleSubmit} className="userDetails" style={{ padding: "0px" }}>
       <div className="userDetails">
-      <h1>Create an account</h1>
+      <h1>Already have an account?</h1>
       <p>Your Personal Job Finder is Here</p>
           
             <input
@@ -58,8 +61,7 @@ const Login = () => {
               placeholder="Email"
               required
             />
-          {error && <p className="error-message">{error.Email}</p>}
-          
+                    
             <input
               type="password"
               name="Password"
@@ -69,7 +71,8 @@ const Login = () => {
               placeholder="Password"
               required
             />
-          {error && <p className="error-message">{error.Password}</p>}
+          {error && <p className="error-message">{error}</p>}
+
           <div className="createAccountDiv">
           <button type="submit" className="login-button">Login</button> {/* Add a 'login-button' class */}
           <p>

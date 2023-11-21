@@ -1,14 +1,13 @@
 .ActionButton {
-    padding: 0.6em 2em;
-    margin: 0.5em 0;
-    margin-left: 0.5em;
-    min-width: 9em;
-    cursor: pointer;
-    font-weight: 600;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 2.2em;
-    border-radius: 3px;
-  }
-  
+  padding: 0.2em 1em;
+  margin: 0.5em 0;
+  margin-left: 0px;
+  min-width: 8em;
+  cursor: pointer;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 2.3em;
+  border-radius: 8px;
+}

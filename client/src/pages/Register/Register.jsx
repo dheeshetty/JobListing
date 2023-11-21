@@ -1,5 +1,5 @@
 
-import React, {useEffect,  useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import bannerImage from '../../assets/banner.jpg';
 import './register.css';
@@ -61,7 +61,6 @@ const Registration = () => {
               name="Name"
               placeholder="Name"
             />
-            {error && <p className="error-message">{error.Name}</p>} {/* Display error message as in your code */}
             <input
               type="email"
               name="Email"
@@ -71,8 +70,7 @@ const Registration = () => {
               placeholder="Email"
               required
             />
-            {error && <p className="error-message">{error.Email}</p>}
-            <input
+             <input
               type="tel"
               name="Mobile"
               id="Mobile"
@@ -81,7 +79,7 @@ const Registration = () => {
               placeholder="Mobile"
               required
             />
-            {error && <p className="error-message">{error.Mobile}</p>}
+            
             <input
               type="password"
               name="Password"
@@ -91,7 +89,7 @@ const Registration = () => {
               placeholder="Password"
               required
             />
-            {error && <p className="error-message">{error.Password}</p>}
+          {error && <p className="error-message">{error}</p>}
             <div className="termConditionDiv">
               <input
                 onChange={handleChange}

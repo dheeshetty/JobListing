@@ -15,25 +15,31 @@
   .login, .signup{
     background-color: #ED5353;
     margin-right: 30px;
-    border-radius: 10px;
     justify-content: space-between;
     font-family: 'DM Sans';
     font-size: 18px;
 
   }
   .login{
+    border-radius: 10px;
     width: 95px;
     height: 45px;
     padding: 0px 10px;
     border-style: solid;
+    color: white;
+    border-color: white;
+    background-color: #FF6B6B;
 
   }
   .signup{
     padding: 0px 10px;
     background-color: white;
-    height: 50px;
+    height: 47px;
     color: #ED5353;
     width: 95px;
+    border-radius: 10px;
+    border-style: none;
+   
   }
   .NavItem {
     display: flex;

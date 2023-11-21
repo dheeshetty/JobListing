@@ -24,7 +24,6 @@ const Homepage = () => {
 
   // Define an array of available skills
   const skillsArray = [
-    'Skills',
     'React' ,
     'NodeJS' ,
     'MongoDB' ,
@@ -70,13 +69,15 @@ const Homepage = () => {
     navigate(`/jobpost?id=${jobId}`);
   };
 
-  const handleSelectChange = (selectedValue) => {
+  const handleSelectChange = (e) => {
+    const selectedValue = e.target.value;
     console.log('Selected Skill:', selectedValue);
+    
     if (selectedValue && !skill.includes(selectedValue)) {
-      setSkill((prevSkill) => [...prevSkill, selectedValue ]);
+      setSkill((prevSkill) => [...prevSkill, selectedValue]);
       console.log('Updated Skill State:', skill);
     }
-  }
+  };
   
 
   const handleRemoveSkill = (skill) => {
@@ -116,6 +117,7 @@ const Homepage = () => {
             <img src={SearchIcon} alt="" />
             <input
                 type="text"
+                placeholder='Type any job title'
                 value={jobTitle}
                 onChange={(e) => setJobTitle(e.target.value)}
                 onKeyDown={(event) => {
@@ -126,11 +128,33 @@ const Homepage = () => {
           </div>
           <div className={classes.FilterDisplay}>
             <div className={classes.LeftDisplay}>
-              <Dropdown
-                filter="filter"
-                options={skillsArray}
-                onChange={(selectedValue) => handleSelectChange(selectedValue)} 
-              />
+            <select
+              value={selectedSkill}
+              onChange={handleSelectChange}
+              style={{
+                width: '12%',
+                height: '2.5em',
+                display: 'flex',
+                border: '#cecece 2px solid',
+                radius: '5px',
+                padding: '0.5em',
+                margin: '0.3em 0',
+                fontSize: '1em',
+                marginRight: '8px',
+                fontFamily: 'DM Sans',
+                color: '#9C9C9C',
+                borderRadius: '5px'
+              }}
+            >
+              <option value="" disabled style={{padding: '0.8em 0'}}>
+                Skills
+              </option>
+              {skillsArray.map((skill) => (
+                <option key={skill} value={skill} style={{ color: '#000000', padding: '0.8em 09'}}>
+                  {skill}
+                </option>
+              ))}
+            </select>
               <div className={classes.FilterOptionContainer}>
                 {skill.length > 0 &&
                   skill.map((skill) => (
@@ -142,17 +166,18 @@ const Homepage = () => {
                   ))}
                 {skill.length > 0 && (
                   <button
-                    style={{
-                      border: 'none',
-                      backgroundColor: 'transparent',
-                      color: '#ed5353',
-                      position: 'absolute',
-                      bottom: '0',
-                      right: '-370px',
-                      fontSize: '1.2em',
-                      fontWeight: '700',
-                      cursor: 'pointer',
-                    }}
+                  style={{
+                    border: 'none',
+                    backgroundColor: 'transparent',
+                    color: '#ed5353',
+                    position: 'absolute',
+                    bottom: '0',
+                    right: authorized ? '230px' : '0', 
+                    left: authorized ? '370px' : 'auto',
+                    fontSize: '1.2em',
+                    fontWeight: '700',
+                    cursor: 'pointer',
+                  }}
                     onClick={clearSkills}
                   >
                     Clear
@@ -163,14 +188,15 @@ const Homepage = () => {
             {
               <div
                 className={classes.RightDisplay}
-                style={{ position: 'absolute', right: '120px' }}
+                style={{ position: 'absolute', right: '108px',top :'97px' }}
               >
                 {authorized && (
                   <ActionButton
-                    text="Add Job"
+                    text="+ Add Job"
                     textColor="#FFF"
                     bgColor="#ff6b6b"
                     fontSize="1.3em"
+                    
                     onClick={onClickHandler}
                   />
                 )}
@@ -201,7 +227,7 @@ const Homepage = () => {
                     </div>
                   </div>
                   <div className={classes.Metadata3}>
-                    <span>{job.remoteOrOffice}</span>
+                    <span>{job.remote}</span>
                     <span>{job.jobType}</span>
                   </div>
                 </div>

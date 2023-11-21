@@ -14,8 +14,8 @@ const initialJobDetails = {
   logoURL: '',
   jobTitle: '',
   salary: '',
-  jobType: 'Full Time',
-  remote: 'In-Office',
+  jobType: 'FullTime',
+  remote: 'Remote',
   location: '',
   description: '',
   about: '',
@@ -227,7 +227,9 @@ if (!response.ok) {
     <>
       {authorized && (
         <SectionPage bgImg={BgImg} title={'Recruiter add job details here'}>
+          
           <div className={classes.JobPostForm}>
+          <h2>Add job description</h2>
             <div className={classes.InputSet}>
               <label>Company Name</label>
               <div className={classes.InputTest}>
@@ -297,7 +299,7 @@ if (!response.ok) {
               <div className={classes.InputTest}>
                 <Dropdown
                   className={classes.Input}
-                  options={['Full Time', 'Part Time']}
+                  options={['FullTime', 'PartTime']}
                   value={jobDetails?.jobType}
                   onChange={(value) => onChangeHandler('jobType', value)}
                 />
@@ -312,7 +314,7 @@ if (!response.ok) {
               <div className={classes.InputTest}>
                 <Dropdown
                   className={classes.Input}
-                  options={['Remote', 'In-Office']}
+                  options={['Remote','InOffice']}
                   value={jobDetails?.remote}
                   onChange={(value) => onChangeHandler('remote', value)}
                 />
@@ -416,7 +418,7 @@ if (!response.ok) {
                 onClick={onCancelHandler}
               />
               <ActionButton
-                text={jobIdToUpdate ? 'Update Job' : 'Add Job'}
+                text={jobIdToUpdate ? 'Update Job' : '+ Add Job'}
                 bgColor="#ED5353"
                 textColor="#FFF"
                 onClick={onSubmitHandler}

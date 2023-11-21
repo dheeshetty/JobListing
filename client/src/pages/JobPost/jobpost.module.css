@@ -1,13 +1,20 @@
 .JobPostForm {
     position: relative;
-  
     width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-family: 'DM Sans';
   }
+h2{
+  position: relative;
+  left: -90px;
+  padding: 15px;
+  font-size: 100px;
+}
+
   .InputSet {
     position: relative;
   
@@ -35,4 +42,5 @@
     color: red;
     font-size: 0.8em;
   }
+
   
