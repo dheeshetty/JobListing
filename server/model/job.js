@@ -43,7 +43,7 @@ const jobSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  createdAt: { type: Date, default: Date.now },// Add other fields as needed
+  createdAt: { type: Date, default: Date.now },
 });
 
 const Job = mongoose.model('Job', jobSchema);

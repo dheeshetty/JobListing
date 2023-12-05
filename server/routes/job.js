@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 const dotenv = require('dotenv');
 const bcrypt = require('bcrypt'); 
 const authMiddleware = require('../middleware/authMiddleware');
-const Job = require('../model/job'); // Import the Job model
+const Job = require('../model/job'); 
 
 
 dotenv.config();
@@ -20,13 +20,13 @@ router.post('/jobpost', authMiddleware, async (req, res) => {
         about,skill, 
         information } = req.body;
 
-    // Check if required fields are provided
+    
     if ( !companyName || !logoURL ||
         !jobTitle||!skill ) {
       return res.status(400).json({ message: 'All required fields must be provided' });
     }
 
-    // If jobType is "remote", set location to empty string
+    
     const updatedlocation = location === '' ? 'Remote' : location;
 
     const updatedLogoURL = req.body.logoURL
@@ -39,7 +39,7 @@ router.post('/jobpost', authMiddleware, async (req, res) => {
         jobTitle,salary,jobType,
         remote ,location: updatedlocation,description,
         about,skill, 
-        information /* Add other required fields */ });
+        information });
     await newJob.save();
 
     res.status(201).json({ message: 'Job post created successfully' });
@@ -51,10 +51,9 @@ router.post('/jobpost', authMiddleware, async (req, res) => {
 
 router.put('/jobpost/:jobId',authMiddleware, async (req, res) => {
     const jobId = req.params.jobId;
-    const updatedJobData = req.body; // Data to update the job post
+    const updatedJobData = req.body; 
   
     try {
-      // Find the job post by its ID
       const job = await Job.findById(jobId);
   
       if (!job) {
@@ -76,7 +75,6 @@ router.put('/jobpost/:jobId',authMiddleware, async (req, res) => {
     try {
       const { skill, jobTitle } = req.query;
   
-      // Define a filter object based on the query parameters
       const filter = {};
       if (skill) {
         filter.skill = { $in: skill.split(',') };
@@ -86,7 +84,6 @@ router.put('/jobpost/:jobId',authMiddleware, async (req, res) => {
         filter.jobTitle = { $regex: jobTitle, $options: 'i' };
       }
   
-      // Query the database with the filter
       const jobs = await Job.find(filter);
   
       res.status(200).json({ jobs });

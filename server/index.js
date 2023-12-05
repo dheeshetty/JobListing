@@ -15,7 +15,7 @@ const app = express();
 
 // Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json()); // Add JSON parsing middleware
+app.use(bodyParser.json()); 
 app.use(cors({ origin: 'http://localhost:3000', methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
 preflightContinue: false,
 optionsSuccessStatus: 204, }));
