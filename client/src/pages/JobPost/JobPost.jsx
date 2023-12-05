@@ -101,10 +101,10 @@ const CreateJob = () => {
   };
 
   const onCancelHandler = () => {
-    navigate('/homepage');
+    navigate('/');
   };
  
-    // Fetch job details if updating an existing job
+    
     useEffect(() => {
         if (jobIdToUpdate) {
         console.log(jobIdToUpdate);
@@ -116,13 +116,13 @@ const CreateJob = () => {
             console.log(data?.Job);
             setJobDetails({
               ...data?.Job,
-              jobType: data?.Job?.jobType || 'Full Time', // Set default if not available
-              remote: data?.Job?.remote || 'In-Office', // Set default if not available
+              jobType: data?.Job?.jobType || 'Full Time', 
+              remote: data?.Job?.remote || 'In-Office', 
             });
           })
           .catch((err) => console.log(err));
       }
-    }, [jobIdToUpdate, BASE_URL]); // Add BASE_URL to the dependency array
+    }, [jobIdToUpdate, BASE_URL]); 
     
    
   const onSubmitHandler = async () => {
@@ -182,13 +182,13 @@ const CreateJob = () => {
             console.log('Request URL:', url);
 
 
-            const token = localStorage.getItem('token'); // Get the token from local storage or wherever it's stored
+            const token = localStorage.getItem('token'); 
 
             const options = {
               method: jobIdToUpdate ? 'PUT' : 'POST',
               headers: {
                 'Content-Type': 'application/json',
-                Authorization: `Bearer ${token}`, // Include the authorization token in the request headers
+                Authorization: `Bearer ${token}`, 
               },
               body: JSON.stringify(jobDetails),
             };
@@ -201,20 +201,17 @@ const CreateJob = () => {
          
 
 if (!response.ok) {
-  // Handle the error
-  const errorData = await response.json(); // Parse the error response
+  const errorData = await response.json();
   console.error(`Error: ${response.status} - ${errorData.message}`);
-  // You can also handle the error message and display it to the user
 } else {
-  // Process the successful response
   const data = await response.json();
-  // Your success handling logic here
-}
+ }
 
   
           if (!jobIdToUpdate) {
-            setJobDetails(initialJobDetails); // Reset form after successful submission
+            setJobDetails(initialJobDetails); 
           }
+          navigate('/');
         } catch (error) {
           console.log(error);
           console.error(error);

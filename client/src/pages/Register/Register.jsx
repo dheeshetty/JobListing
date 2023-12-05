@@ -34,7 +34,7 @@ const Registration = () => {
         const { jwtToken, recruiterName } = response;
         localStorage.setItem('token', jwtToken);
         localStorage.setItem('user', recruiterName);
-        navigate('/HomePage');
+        navigate('/');
         console.log('Registered successfully');
       }
     } catch (error) {

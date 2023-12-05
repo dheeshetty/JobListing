@@ -4,7 +4,6 @@ import SearchIcon from '../../assets/SearchIcon.png';
 import FilterOption from '../../components/filter/FilterOption';
 import { useNavigate, useParams } from 'react-router-dom';
 import Header from '../../components/Header';
-import Dropdown from '../../components/dropdown/Dropdown';
 import ActionButton from '../../components/Actionbutton/ActionButton';
 import SkillTag from '../../components/skill/skilltag';
 import EmployeeLogo from '../../assets/Employee.png';
@@ -22,17 +21,17 @@ const Homepage = () => {
   const [user, setUser] = useState(localStorage.getItem('user'));
   const token = localStorage.getItem('token');
 
-  // Define an array of available skills
+  
   const skillsArray = [
     'React' ,
     'NodeJS' ,
     'MongoDB' ,
     'C++' ,
-    'C' ,
     'Python' ,
-    'html' ,
+    'HTML' ,
     'CSS' ,
     'JavaScript' ,
+    'Java'
   ];
 
   const [selectedSkill, setSelectedSkill] = useState('');
@@ -46,14 +45,14 @@ const Homepage = () => {
   }, [token]);
 
   useEffect(() => {
-  // Fetch jobs based on skills and jobTitle
+  
   const skillQuery = skill.length > 0 ? `skill=${skill.join(',')}` : '';
   const searchQuery = [skillQuery, jobTitle ? `jobTitle=${jobTitle}` : ''].filter(Boolean).join('&');
 
   fetchJobs(searchQuery)
     .then((data) => {
-      // Assuming that the response contains a property called 'jobs' with an array of job data
-      const fetchedJobs = data.jobs; // Adjust this based on your API response structure
+      
+      const fetchedJobs = data.jobs; 
       setJobs(fetchedJobs);
     })
     .catch((error) => console.error(error));
@@ -89,10 +88,10 @@ const Homepage = () => {
   };
 
   const handleLogout = () => {
-    // Clear user-related data and update the state to indicate no user is logged in.
-    localStorage.removeItem('token'); // Remove the user's token
-    localStorage.removeItem('user'); // Remove any user-related data
-    setUser(''); // Set the user state to null or an initial state
+    
+    localStorage.removeItem('token'); 
+    localStorage.removeItem('user'); 
+    setUser(''); 
   };
 
   const handleSkillClick = (skill) => {

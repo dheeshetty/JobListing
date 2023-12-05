@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import bannerImage from '../../assets/banner.jpg';
-import './login.css'; // You may need to create a corresponding CSS file for your component.
+import './login.css'; 
 import { loginUser } from '../../apis/auth';
 import { useNavigate } from 'react-router-dom';
 
@@ -10,7 +10,7 @@ const Login = () => {
     Password: '',
   });
 
-  const [error, setError] = useState(''); // Error message state
+  const [error, setError] = useState(''); 
 
   const { Email, Password } = formData;
   const navigate = useNavigate();
@@ -23,16 +23,13 @@ const Login = () => {
     e.preventDefault();
     try {
       const response = await loginUser(formData);
-      // Assuming the backend sends a token and user name in the response on successful login
       const { jwtToken, recruiterName } = response;
 
-      // Store the token and user name in localStorage
       localStorage.setItem('token', jwtToken);
       localStorage.setItem('user', recruiterName);
 
       
-      navigate('/HomePage');
-      // You can use React Router for navigation.
+      navigate('/');      
       console.log('Login success');
     } catch (error) {
       if (error.response && error.response.status === 401) {

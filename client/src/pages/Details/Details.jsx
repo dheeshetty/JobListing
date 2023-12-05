@@ -75,8 +75,10 @@ const Details = () => {
   };
 
   const handleEditJob = (jobId) => {
+    console.log('Editing job with ID:', jobId);
     navigate(`/jobpost?id=${jobId}`);
   };
+  
 
   const handleLogout = () => {
     // Clear user-related data and update the state to indicate no user is logged in.
@@ -105,14 +107,15 @@ const Details = () => {
             <img className={classes.Logo} src={job?.logoURL} alt="" />
             <span>
               {job?.companyName}{' '}
-              <div className={classes.ActionButton}>
+              <div className={classes.ActionButton}style={{ right: '20px' }}>
                 {authorized && (
                   <ActionButton
                     text="Edit Job"
                     bgColor="#ED5353"
                     textColor="#fff"
-                    onClick={() => handleEditJob(job?._id)}
-                  />
+                    onClick={() => handleEditJob(job?._id)
+                  }
+                />
                 )}
               </div>
             </span>
