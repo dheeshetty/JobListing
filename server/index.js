@@ -16,7 +16,7 @@ const app = express();
 // Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json()); 
-app.use(cors({ origin: 'https://job-listing-backend-bz4d.onrender.com', methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+app.use(cors({ origin: 'https://job-listing-kc08pt9dc-dheeshetty.vercel.app/', methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
 preflightContinue: false,
 optionsSuccessStatus: 204, }));
 
